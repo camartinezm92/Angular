@@ -1,0 +1,29 @@
+
+
+<h3>Listado de Héroes</h3>
+
+<h3>
+  <small class="text-danger">
+    //ultimo heroe borrado
+  </small>
+</h3>
+
+<h3>Ningun Héroe se ha borrado</h3>
+
+
+<button class="btn btn-outline-danger">
+  Borrar ultimo Héroe
+</button>
+
+
+
+
+<ul class="mt-2 list-group">
+
+  <li
+  *ngFor="let name of nameHeroes "
+  class="list-group-item">
+  {{ name }}
+  </li>
+
+</ul>
