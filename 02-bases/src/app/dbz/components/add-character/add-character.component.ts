@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { characters } from './../../interfaces/characters.interface';
 
 
 @Component({
@@ -8,4 +9,18 @@ import { Component } from '@angular/core';
 })
 export class AddCharacterComponent {
 
+  public Character: characters ={
+    name:'',
+    power: 0
+  }
+
+
+  emitCharacter() : void  {
+    console.log(this.Character)
+
+
+    this.Character.name ='';
+    this.Character.power =0;
+
+  }
 }

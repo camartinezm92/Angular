@@ -1,10 +1,32 @@
 <h4>Agregar personaje</h4>
 
-<form>
-  <input type="text" name="" id="" placeholder="Nombre" class="form-control mb-2">
-  <input type="number" name="" id="" placeholder="Poder" class="form-control mb-2">
+<form CLASS="row" (ngSubmit)="emitCharacter()">
+  <!-- Nombre del nuevo personaje -->
+  <input
+  type="text"
+  name="name"
+  [(ngModel)]="Character.name"
+  placeholder="Nombre"
+  class="form-control mb-2"
+  >
 
-  <button type="submit" class="btn btn-primary">
+  <!-- Poder del nuevo personaje -->
+  <input type="number"
+  name="power"
+  [(ngModel)]="Character.power"
+  placeholder="Poder"
+  class="form-control mb-2"
+  >
+
+  <!-- Boton -->
+  <button
+  type="submit"
+  class="btn btn-primary"
+  >
     Agregar
   </button>
+  <br>
+
+  <!-- {{Character | json}} ESTO ES UN PIPE!!!  -->
+
 </form>

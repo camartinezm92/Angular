@@ -17,6 +17,9 @@ export class PagesDBZComponent {
   },{
     name: 'Goku',
     power: 9500
+  },{
+    name: 'Vegueta',
+    power: 7500
   }
 ]
 }

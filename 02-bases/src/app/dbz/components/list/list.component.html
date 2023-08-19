@@ -2,15 +2,51 @@
 
 <ul class="list-group">
 
-  <li *ngFor="let character of characterList" class="list-group-item">
+  <li *ngFor="
+    let character of characterList;
+    let i = index;
+    let isFirst = first;
+    let isLast = last;
+    let isEven = even;
+    let isOdd = odd;
+    "
+    class="list-group-item"
+    [ngClass]="{
+      'list-group-item-secondary':isEven,
+    }"
+
+    >
+    <!-- class="list-group-item {{ i === 0 ? 'list-group-item-success':''}}">  forma de estrucutrar una condicon para un estilo -->
+    <!--let character of characterList; ITERAR EN LA LISTA
+    let i = index; INDICA LA PISICION DEL ITEM
+    let isFirst = first; INDICA SI ES EL PRIMERO DE LA LISTA POR UN VALOR BOOLEANO
+    let isLast = last; INDICA SI ES EL ULTIMO DE LA LISTA POR UN VALOR BOOLEANO
+    let isEven = even; INDICA SI ES PAR EL ITEM
+    let isOdd = odd; INDICA SI ES IMPAR EL ITEM
+    -->
+
+      <span class=""> {{ i + 1 }}.</span>
+      <!-- se indica i + 1 debido a que el index inicia su cuenta en el numero 0  -->
       <span>
+
         {{character.name}} -
-      </span>
-      <strong>Power: </strong>
-      <span>
-        {{character.power}}
+
       </span>
 
+      <strong>Power: </strong>
+
+      <span>
+
+        {{character.power}}
+
+      </span>
+
+<!-- <span> EL numero es par: {{ isEven }}</span>
+      <span> EL numero es impar: {{ isOdd }}</span>
+      <span> EL numero es el primero condicion: {{ i ===0 }}</span>
+      <span> EL numero es el primero angula: {{ i ===0 }}</span>
+      <span> EL numero es el ultimo condicion: {{ i === characterList.length - 1  }}</span>
+      <span> EL numero es el utimo angula: {{ isLast }}</span> -->
 
   </li>
 
