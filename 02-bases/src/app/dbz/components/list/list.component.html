@@ -10,12 +10,15 @@
     let isEven = even;
     let isOdd = odd;
     "
-    class="list-group-item"
+    class="list-group-item d-flex justify-content-between align-items-center"
     [ngClass]="{
       'list-group-item-secondary':isEven,
     }"
 
     >
+    <!-- [ngClass]="{
+      'list-group-item-secondary':isEven,   SE ESTABLECEN CONDICIONES PARA LA VISUAL DE ELEMENTO
+    }" -->
     <!-- class="list-group-item {{ i === 0 ? 'list-group-item-success':''}}">  forma de estrucutrar una condicon para un estilo -->
     <!--let character of characterList; ITERAR EN LA LISTA
     let i = index; INDICA LA PISICION DEL ITEM
@@ -24,23 +27,15 @@
     let isEven = even; INDICA SI ES PAR EL ITEM
     let isOdd = odd; INDICA SI ES IMPAR EL ITEM
     -->
+      <div class="">
+        <span class=""> {{ i + 1 }}.</span>
+        <!-- se indica i + 1 debido a que el index inicia su cuenta en el numero 0  -->
+        <span>{{character.name}} -</span>
+        <strong>Power: </strong>
+        <span>{{character.power}}</span>
+      </div>
 
-      <span class=""> {{ i + 1 }}.</span>
-      <!-- se indica i + 1 debido a que el index inicia su cuenta en el numero 0  -->
-      <span>
-
-        {{character.name}} -
-
-      </span>
-
-      <strong>Power: </strong>
-
-      <span>
-
-        {{character.power}}
-
-      </span>
-
+        <button class="btn btn-danger" (click)="onDeleteCharacter(character.id)">Delete</button>
 <!-- <span> EL numero es par: {{ isEven }}</span>
       <span> EL numero es impar: {{ isOdd }}</span>
       <span> EL numero es el primero condicion: {{ i ===0 }}</span>
