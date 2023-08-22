@@ -7,11 +7,13 @@ import { CounterModule } from './counter/counter.module';
 
 import { DBZModule } from './dbz/dbz.module';
 import { HeroesModule } from './heroes/heroes.module';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,
