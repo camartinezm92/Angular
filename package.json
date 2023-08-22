@@ -3,6 +3,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@types/uuid": "^9.0.2"
+    "@types/uuid": "^9.0.2",
+    "copyfiles": "^2.4.1"
   }
 }
