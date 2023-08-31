@@ -15,7 +15,7 @@ export class ByCountryPageComponent {
   constructor ( private countrySevice : CountriesService) {}
 
   searcheByCountry( term:string):void {
-    this.countrySevice.searcheByCountry(term)
+    this.countrySevice.consultItem('name',term)
     .subscribe(country => this.Country = country)
 
   }

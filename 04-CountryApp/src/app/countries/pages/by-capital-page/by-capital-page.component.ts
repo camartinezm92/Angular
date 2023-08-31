@@ -10,13 +10,13 @@ import { CountriesService } from '../../services/countries.service';
 })
 export class ByCapitalPageComponent {
 
-  public countries : Country[] = [];
+  public capitals : Country[] = [];
 
   constructor ( private conutriesService : CountriesService ) {}
 
   searchByCapital (term : string):void{
-    this.conutriesService.searchByCapital(term)
+    this.conutriesService.consultItem('capital',term)
     .subscribe( countries =>{
-      this.countries = countries }  )
+      this.capitals = countries }  )
   }
 }
