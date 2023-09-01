@@ -1,0 +1,57 @@
+
+<ng-template #loading>
+  <div class="alert alert-info text-center">
+    <h3>Espere por favor</h3>
+  </div>
+</ng-template>
+
+<div *ngIf ="infoCountry; else loading">
+  <div class="row" >
+    <div class="col-12">
+      <h2>Pais: <strong>{{infoCountry.name.common}}</strong></h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <h3>Bandera</h3>
+      <img [src]="infoCountry.flags.svg" [alt]="infoCountry.name.common" class="img-thumbnail">
+    </div>
+
+    <div class="col">
+      <h3>Informacion</h3>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Poblacion:</strong> {{infoCountry.population | number}}
+        </li>
+        <li class="list-group-item">
+          <strong>Acronimo:</strong> {{infoCountry.cca3 }}
+        </li>
+        <li class="list-group-item">
+          <strong>Capital:</strong> {{infoCountry.capital }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+      <div class="col">
+        <h3>Traducciones</h3>
+        <div class="d-flex flex-wrap">
+          <span class="badge bg-primary m-1">{{infoCountry.translations['ara']?.common}}</span>
+          <span class="badge bg-primary m-1">{{infoCountry.translations['bre']?.common}}</span>
+          <span class="badge bg-primary m-1">{{infoCountry.translations['por']?.common}}</span>
+          <span class="badge bg-primary m-1">{{infoCountry.translations['rus']?.common}}</span>
+          <span class="badge bg-primary m-1">{{infoCountry.translations['fra']?.common}}</span>
+          <span class="badge bg-primary m-1">{{infoCountry.translations['deu']?.common}}</span>
+          <span class="badge bg-primary m-1">{{infoCountry.translations['hun']?.common}}</span>
+          <span class="badge bg-primary m-1">{{infoCountry.translations['jap']?.common}}</span>
+          <span class="badge bg-primary m-1">{{infoCountry.translations['fin']?.common}}</span>
+          <span class="badge bg-primary m-1">{{infoCountry.translations['ita']?.common}}</span>
+          <span class="badge bg-primary m-1">{{infoCountry.translations['kor']?.common}}</span>
+        </div>
+      </div>
+
+  </div>
+
+</div>

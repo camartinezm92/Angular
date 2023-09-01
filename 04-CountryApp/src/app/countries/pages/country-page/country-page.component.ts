@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CountriesService } from '../../services/countries.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs';
+import { Country } from '../../interfaces/country';
 
 @Component({
   selector: 'countries-country-page',
@@ -17,21 +18,19 @@ export class CountryPageComponent implements OnInit {
     private IdService : CountriesService,
     ) {}
 
-
+    public infoCountry? : Country;
 
 
   ngOnInit(): void {
     this.activeRoute.params
     .pipe(
-      switchMap( ( { id }) => this.IdService.consultItem('alpha', id))
+      switchMap( ( { id }) => this.IdService.consultItem('alpha', id)),
+      map(countries => countries.length > 0 ? countries[0]: null)
     )
-    .subscribe(country =>{
-      if(!country){
-        return this.router.navigateByUrl('');
-      }
-
-      console.log('Tenemos un Pais')
-      return;
+    .subscribe(country =>{      if(!country){
+                                  return this.router.navigateByUrl('');
+                                }
+      return this.infoCountry = country
     });
 
   }
