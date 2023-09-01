@@ -20,6 +20,8 @@ export class CountriesService {
       ))
   }
 
+
+
   // searchByCapital ( term: string ): Observable <Country[]> {
   //   return this.consultItem('capital',term)
   // }

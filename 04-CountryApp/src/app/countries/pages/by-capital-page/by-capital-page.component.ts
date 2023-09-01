@@ -16,7 +16,7 @@ export class ByCapitalPageComponent {
 
   searchByCapital (term : string):void{
     this.conutriesService.consultItem('capital',term)
-    .subscribe( countries =>{
+    .subscribe( (countries: Country[]) =>{
       this.capitals = countries }  )
   }
 }
