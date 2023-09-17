@@ -10,12 +10,12 @@ import { CountriesService } from '../../services/countries.service';
 })
 export class ByRegionPageComponent {
 
-  constructor( private RegionServices : CountriesService){}
+  constructor( private regionServices : CountriesService){}
 
   public regions : Country[] = [];
 
   serachByRegion (term: string):void{
-    this.RegionServices.consultItem('region',term)
+    this.regionServices.consultItem('region',term)
     .subscribe(resp => this.regions = resp)
   }
 
