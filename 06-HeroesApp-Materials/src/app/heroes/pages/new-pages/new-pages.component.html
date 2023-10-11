@@ -12,14 +12,16 @@
 
     <mat-card>
       <mat-card-content>
-        <div class="grid">
+        <form class="grid" [formGroup]="formHero" (ngSubmit)="onSubmit()">
 
           <mat-form-field class="col-12 sm:col-6">
             <mat-label>Super Heroe</mat-label>
             <input
               matInput
               type="text"
-              required>
+              required
+              formControlName="superhero"
+              >
           </mat-form-field>
 
           <mat-form-field class="col-12 sm:col-6">
@@ -27,7 +29,9 @@
             <input
               matInput
               type="text"
-              required>
+              required
+              formControlName="alter_ego"
+              >
           </mat-form-field>
 
           <mat-form-field class="col-12">
@@ -35,7 +39,9 @@
             <input
               matInput
               type="text"
-              required>
+              required
+              formControlName="first_appearance"
+              >
           </mat-form-field>
 
           <mat-form-field class="col-12">
@@ -43,7 +49,9 @@
             <input
               matInput
               type="text"
-              required>
+              required
+              formControlName="characters"
+              >
           </mat-form-field>
 
           <mat-form-field class="col-12">
@@ -51,17 +59,26 @@
             <mat-select requiered ="">
               <mat-option *ngFor="let publisher of publishers"
               [value]="publisher.id">
-              {{publisher.value}}
+              {{publisher.id}}
             </mat-option>
             </mat-select>
           </mat-form-field>
-        </div>
+        </form>
 
         <div class="flex justify-content-between">
           <button
           mat-flat-button
-          >
+          color="warn">
+          Borrar
+          </button>
 
+          <button
+          mat-flat-button
+          color="primary"
+          (click)="onSubmit()"
+          >
+          <mat-icon>save</mat-icon>
+          Guadrdar
           </button>
 
         </div>
@@ -71,6 +88,8 @@
   </div>
 
   <div class="col-12 sm:col-6">
+
+
 
   </div>
 
