@@ -63,7 +63,19 @@
             </mat-option>
             </mat-select>
           </mat-form-field>
+
+          <mat-form-field class="col-12">
+            <mat-label>Alternative Image</mat-label>
+            <input
+              matInput
+              type="text"
+              formControlName="alt_img"
+              >
+          </mat-form-field>
+
         </form>
+
+
 
         <div class="flex justify-content-between">
           <button
@@ -89,8 +101,17 @@
 
   <div class="col-12 sm:col-6">
 
-
+    <mat-card>
+      <img [src]="currentHero | heroImage" [alt]=" currentHero.superhero">
+    </mat-card>
 
   </div>
 
 </div>
+
+
+<pre>
+  {{
+    currentHero | json}}
+
+</pre>

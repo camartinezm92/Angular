@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+
+
+import { switchMap } from 'rxjs';
 import { Hero, Publisher } from '../../interfaces/hero.interface';
 import { HeroesService } from '../../services/heroes.service';
 
@@ -9,7 +13,7 @@ import { HeroesService } from '../../services/heroes.service';
   styles: [
   ]
 })
-export class NewPagesComponent {
+export class NewPagesComponent  implements OnInit{
 
   public formHero = new FormGroup({
     id:                 new FormControl<string>(''),
@@ -26,14 +30,53 @@ export class NewPagesComponent {
     { id:'Marvel Comics' , value: 'Marvel - Comics' }
   ]
 
-  constructor (private heroSerevice : HeroesService ){}
+  constructor (private heroSerevice : HeroesService,
+                private activeRoute: ActivatedRoute,
+                private roueter : Router){}
+
+  get currentHero () : Hero {
+    const hero = this.formHero.value as Hero;
+    return hero;
+  }
+
+  ngOnInit(): void {
+
+    if( !this.roueter.url.includes('edit')) return;
+
+    this.activeRoute.params
+    .pipe(
+      switchMap ( ({id}) => this.heroSerevice.getHeroById(id)),
+    )
+    .subscribe( hero => {
+
+      if(!hero) return this.roueter.navigateByUrl('/');
+
+      this.formHero.reset(hero);
+      return;
+    });
+
+  }
+
 
   onSubmit():void{
 
     if(this.formHero.invalid) return;
 
-    //this.heroSerevice.updateHero(this.formHero.value)
+    if(this.currentHero.id){
+      this.heroSerevice.updateHero(this.currentHero)
+      .subscribe( hero =>{
+        //TODO: mostrar snackbar
+      })
+      return;
+    }
+
+    this.heroSerevice.addHero(this.currentHero)
+    .subscribe(hero=>{
+      //TODO: mostar snackbar y redireccionar a /heroes/edit/hero.id
+    })
+
+    }
 
   }
 
-}
+
