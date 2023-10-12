@@ -12,6 +12,7 @@ import { NewPagesComponent } from './pages/new-pages/new-pages.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { CardComponent } from './components/card/card.component';
 import { HeroImagePipe } from './pipes/hero-image.pipe';
+import { ComfirmDaialogComponent } from './components/comfirm-daialog/comfirm-daialog.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { HeroImagePipe } from './pipes/hero-image.pipe';
 
     // pipes
     HeroImagePipe,
+      ComfirmDaialogComponent,
   ],
   imports: [
     CommonModule,

@@ -22,7 +22,8 @@
       "publisher": "DC Comics",
       "alter_ego": "Kal-El",
       "first_appearance": "Action Comics #1",
-      "characters": "Kal-El"
+      "characters": "Kal-El",
+      "alt_img": "https://images.squarespace-cdn.com/content/v1/593f201de3df288fc6465e6f/1632747490214-X5CRJ1MBN4RRV87PCSXL/Superman+-+Up+in+the+Sky+Cover.jpg"
     },
     {
       "id": "dc-flash",
@@ -167,6 +168,15 @@
       "alter_ego": "Norrin Radd",
       "first_appearance": "The Fantastic Four #48",
       "characters": "Norrin Radd"
+    },
+    {
+      "id": "jApr2wI",
+      "superhero": "camilo",
+      "publisher": "DC Comics",
+      "alter_ego": "martinez",
+      "first_appearance": "2017",
+      "characters": "bio",
+      "alt_img": "https://www.shutterstock.com/image-photo/young-handsome-man-beard-wearing-260nw-1817367890.jpg"
     }
   ]
 }
