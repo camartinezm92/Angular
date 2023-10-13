@@ -1,1 +1,9 @@
-<p>comfirm-daialog works!</p>
+<h1 mat-dialog-title> Esta apunto de eliminar al {{data.superhero}} </h1>
+<div mat-dialog-content>
+  <p>Esta seguro que desea eliminar al heroe?</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button color="primary" (click)="onNoClick()">No Thanks</button>
+  <span class="spacer"></span>
+  <button mat-button color="warn" (click)="onConfirm()" cdkFocusInitial>Eliminar</button>
+</div>

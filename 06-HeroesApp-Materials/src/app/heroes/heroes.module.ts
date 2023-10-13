@@ -26,7 +26,7 @@ import { ComfirmDaialogComponent } from './components/comfirm-daialog/comfirm-da
 
     // pipes
     HeroImagePipe,
-      ComfirmDaialogComponent,
+    ComfirmDaialogComponent,
   ],
   imports: [
     CommonModule,

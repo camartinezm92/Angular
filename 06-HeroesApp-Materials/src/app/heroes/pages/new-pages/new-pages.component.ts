@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 
-import { switchMap } from 'rxjs';
+import { filter, switchMap } from 'rxjs';
 import { Hero, Publisher } from '../../interfaces/hero.interface';
 import { HeroesService } from '../../services/heroes.service';
 import { ComfirmDaialogComponent } from '../../components/comfirm-daialog/comfirm-daialog.component';
@@ -37,7 +37,7 @@ export class NewPagesComponent  implements OnInit{
   constructor (private heroSerevice : HeroesService,
                 private activeRoute:  ActivatedRoute,
                 private router :     Router,
-                private snackBarr :   MatSnackBar,
+                private snackBar :   MatSnackBar,
                 private dialog : MatDialog,
                 ){}
 
@@ -95,15 +95,23 @@ export class NewPagesComponent  implements OnInit{
         data: this.formHero.value
       });
 
-      dailogRef.afterClosed().subscribe (result => {
-        console.log('The Dialog was Closed');
-        console.log({result});
+      dailogRef.afterClosed()
+      .pipe(
+        filter((result : boolean )=> result),
+        switchMap( () => this.heroSerevice.deleteHeroById(this.currentHero.id)),
+      )
+      .subscribe (wasDeleted => {
+        if (wasDeleted){
+          this.showSnackBar("Erroe borrado correctamente");
+          this.router.navigate(['/heroes/list']);
+        }else{
+          this.showSnackBar("Error al Eliminar el heroe")
+        }
       });
-    };
-
+    }
 
     showSnackBar (message: string):void{
-      this.snackBarr.open(message, 'Done' , {
+      this.snackBar.open(message, 'Done' , {
         duration: 2500,
       });
     };
