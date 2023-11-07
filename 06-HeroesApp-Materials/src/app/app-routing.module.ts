@@ -1,31 +1,35 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { AuthGuard } from './auth/guards/auth.guard';
 import { Error404pageComponent } from './shared/pages/error404page/error404page.component';
 
+import { AuthGuard } from './auth/guards/auth.guard';
+import { PublicGuard } from './auth/guards/public.guard';
+
+// dominio.com/
 const routes: Routes = [
   {
-    path:'auth',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule ),
+    canActivate: [ PublicGuard ],
+    canMatch: [ PublicGuard ]
   },
   {
-    path:'heroes',
-    loadChildren: () => import('./heroes/heroes.module').then( m =>m.HeroesModule),
-    canActivate: [AuthGuard.CanActivate],
-    canMatch: [AuthGuard.CanMatch]
+    path: 'heroes',
+    loadChildren: () => import('./heroes/heroes.module').then( m => m.HeroesModule ),
+    canActivate: [ AuthGuard ],
+    canMatch: [ AuthGuard ]
   },
   {
-    path:'404',
-    component:Error404pageComponent
+    path: '404',
+    component: Error404pageComponent,
   },
   {
-    path:'',
+    path: '',
     redirectTo: 'heroes',
-    pathMatch:'full'
+    pathMatch: 'full'
   },
   {
-    path:'**',
+    path: '**',
     redirectTo: '404',
   }
 ];
