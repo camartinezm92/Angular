@@ -17,6 +17,7 @@ const infoStart = {
 
 export class BasicPageComponent implements OnInit {
 
+
   // Una forma de establercer un formulario
   // public myForm: FormGroup = new FormGroup ({
   //   //name: new FormControl( '' , [] , [] ),  '' = Valor por defecto , [] = Validaciones sincronas, [] = Validaciones asincornas
@@ -43,6 +44,33 @@ export class BasicPageComponent implements OnInit {
 
   }
 
+  isValidField(field: string): boolean | null{ // VALIDA EL ESTADO DEL CAMPO
+
+    return this.myForm.controls[field].errors
+    && this.myForm.controls[field].touched;
+
+    }
+
+
+    getFieldError(field: string): string | null {
+      if(!this.myForm.controls[field]) return null;
+
+      const errors = this.myForm.controls[field].errors || {};
+
+      for (const key of Object.keys(errors)){
+        switch(key){
+          case 'required':
+            return ' Este campo es requerido';
+
+            case 'minlength':
+              return `Este campo requiere un minimo de  ${errors['minlength'].requiredLength} caracteres.`;
+
+              case 'min':
+              return `Este campo debe tener un valor mayor a 0.`;
+          }
+      }
+      return null;
+    }
 
   onSave():void {
 
